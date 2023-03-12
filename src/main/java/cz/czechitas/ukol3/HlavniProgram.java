@@ -16,7 +16,7 @@ public class HlavniProgram {
         Pocitac mujPocitac;
         mujPocitac = new Pocitac();
         System.out.println(mujPocitac.toString());
-        mujPocitac.zapniSe(); // musí vypsat chybu, PC nemá všechny potřebné součásti
+
 
 
         Procesor mujProcesor;
@@ -39,9 +39,9 @@ public class HlavniProgram {
 
         System.out.println(mujPocitac.toString());
 
-        mujPocitac.zapniSe();
 
-        System.out.println("Program spuštěn.");
+        System.out.println(mujPocitac.toString());
+
 
     }
 

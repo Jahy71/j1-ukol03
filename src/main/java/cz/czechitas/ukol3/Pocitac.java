@@ -11,11 +11,11 @@ public class Pocitac {
     private Disk pevnyDisk;
 
 
-    public boolean zapniSe() {
+    public boolean isJeZapnuty() {
         return this.jeZapnuty;
     }
 
-    public void setJeZapnuty (boolean jeZapnuty) {
+    public void setJeZapnuty(boolean jeZapnuty) {
         this.jeZapnuty = jeZapnuty;
     }
 
