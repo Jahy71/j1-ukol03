@@ -1,9 +1,9 @@
 package cz.czechitas.ukol3;
 
-import cz.czechitas.ukol3.Disk;
-import cz.czechitas.ukol3.Pamet;
-import cz.czechitas.ukol3.Procesor;
-import cz.czechitas.ukol3.Pocitac;
+import cz.czechitas.ukol3.model.Disk;
+import cz.czechitas.ukol3.model.Pamet;
+import cz.czechitas.ukol3.model.Pocitac;
+import cz.czechitas.ukol3.model.Procesor;
 
 /**
  * Spouštěcí třída celého programu
@@ -15,7 +15,8 @@ public class HlavniProgram {
 
         Pocitac mujPocitac;
         mujPocitac = new Pocitac();
-        System.out.println(mujPocitac.toString());
+        System.out.println(mujPocitac);
+        mujPocitac.zapniSe();
 
 
 
@@ -37,10 +38,9 @@ public class HlavniProgram {
         mujPocitac.setRam(mojePamet);
         mujPocitac.setPevnyDisk(mujDisk);
 
-        System.out.println(mujPocitac.toString());
+        System.out.println(mujPocitac);
 
 
-        System.out.println(mujPocitac.toString());
 
 
     }

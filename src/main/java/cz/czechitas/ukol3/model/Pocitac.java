@@ -1,8 +1,8 @@
-package cz.czechitas.ukol3;
+package cz.czechitas.ukol3.model;
 
 public class Pocitac {
 
-    public boolean jeZapnuty;
+    private boolean jeZapnuty;
 
     private Procesor cpu;
 
@@ -11,12 +11,28 @@ public class Pocitac {
     private Disk pevnyDisk;
 
 
-    public boolean isJeZapnuty() {
+    public boolean jeZapnuty() {
         return this.jeZapnuty;
     }
 
-    public void setJeZapnuty(boolean jeZapnuty) {
-        this.jeZapnuty = jeZapnuty;
+    public void zapniSe() {
+        if (cpu != null && ram != null && pevnyDisk != null) {
+            if (jeZapnuty) {
+                System.err.println("ERROR: Počítač je již zapnutý.");
+            } else {
+                jeZapnuty = true;
+                System.out.println("Počítač se právě zapnul.");
+            }
+        } else {
+            System.err.println("ERROR: Počítači chybí komponenty.");
+        }
+    }
+
+    public void vypniSe() {
+        if (jeZapnuty) {
+            jeZapnuty = false;
+            System.out.println("Počítač se právě vypnul.");
+        }
     }
 
 
@@ -47,7 +63,6 @@ public class Pocitac {
     @Override
     public String toString() {
         return "Pocitac: " +
-                jeZapnuty + ", " +
                 cpu + ", " +
                 ram + ", " +
                 pevnyDisk;
