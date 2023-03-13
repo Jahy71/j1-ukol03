@@ -22,6 +22,7 @@ public class Disk {
         this.vyuziteMisto = vyuziteMisto;
     }
 
+
     @Override
     public String toString() {
         return "kapacita disku: " + kapacita + " B" +

@@ -4,6 +4,7 @@ public class Pamet {
 
     private long kapacita;
 
+
     public long getKapacita() {
         return kapacita;
     }
@@ -11,6 +12,7 @@ public class Pamet {
     public void setKapacita(long kapacita) {
         this.kapacita = kapacita;
     }
+
 
     @Override
     public String toString() {

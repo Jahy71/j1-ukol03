@@ -10,6 +10,10 @@ public class Pocitac {
 
     private Disk pevnyDisk;
 
+    private Long vytvorSouborOVelikosti;
+
+    private Long vymazSouboryOVelikosti;
+
 
     public boolean jeZapnuty() {
         return this.jeZapnuty;
@@ -35,7 +39,6 @@ public class Pocitac {
         }
     }
 
-
     public Procesor getCpu() {
         return cpu;
     }
@@ -60,11 +63,43 @@ public class Pocitac {
         this.pevnyDisk = pevnyDisk;
     }
 
+    public Long getVytvorSouborOVelikosti() {
+        return vytvorSouborOVelikosti;
+    }
+
+    public void setVytvorSouborOVelikosti(Long vytvorSouborOVelikosti) {
+        if (vytvorSouborOVelikosti > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
+            System.err.println("ERROR: Nedostatek místa na disku.");
+        } else {
+            pevnyDisk.setVyuziteMisto(vytvorSouborOVelikosti + pevnyDisk.getVyuziteMisto());
+        }
+        this.vytvorSouborOVelikosti = vytvorSouborOVelikosti;
+    }
+
+
+    public Long getVymazSouboryOVelikosti() {
+        return vymazSouboryOVelikosti;
+    }
+
+
+    public void setVymazSouboryOVelikosti(Long vymazSouboryOVelikosti) {
+        if (vymazSouboryOVelikosti > pevnyDisk.getVyuziteMisto()) {
+            System.err.println("ERROR: Takové místo nenív paměti.");
+        } else {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouboryOVelikosti);
+        }
+        this.vymazSouboryOVelikosti = vymazSouboryOVelikosti;
+    }
+
+
     @Override
     public String toString() {
         return "Pocitac: " +
                 cpu + ", " +
                 ram + ", " +
+                "vytvor soubor o velikosti: " + vytvorSouborOVelikosti + " B, " +
+                "vymaz soubor o velikosti: " + vymazSouboryOVelikosti + " B, " +
                 pevnyDisk;
+
     }
 }

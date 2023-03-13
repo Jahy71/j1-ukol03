@@ -18,8 +18,6 @@ public class HlavniProgram {
         System.out.println(mujPocitac);
         mujPocitac.zapniSe();
 
-
-
         Procesor mujProcesor;
         mujProcesor = new Procesor();
         mujProcesor.setRychlost(2_400_000_000L);
@@ -32,17 +30,17 @@ public class HlavniProgram {
         Disk mujDisk;
         mujDisk = new Disk();
         mujDisk.setKapacita(512_000_000_000L);
-        mujDisk.setVyuziteMisto(311_000_000L);
+        mujDisk.setVyuziteMisto(311_000_000_000L);
 
         mujPocitac.setCpu(mujProcesor);
         mujPocitac.setRam(mojePamet);
         mujPocitac.setPevnyDisk(mujDisk);
 
+        // Vytvoření nového souboru:
+        mujPocitac.setVytvorSouborOVelikosti(100_000_000_000L);
+        // Vymazání stávajícího souboru:
+        mujPocitac.setVymazSouboryOVelikosti(200_000_000_000L);
+
         System.out.println(mujPocitac);
-
-
-
-
     }
-
 }
