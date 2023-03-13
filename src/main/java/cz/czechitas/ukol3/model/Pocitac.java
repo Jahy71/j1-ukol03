@@ -14,6 +14,7 @@ public class Pocitac {
 
     private Long vymazSouboryOVelikosti;
 
+    private DruhyDisk druhyDisk;
 
     public boolean jeZapnuty() {
         return this.jeZapnuty;
@@ -81,7 +82,6 @@ public class Pocitac {
         return vymazSouboryOVelikosti;
     }
 
-
     public void setVymazSouboryOVelikosti(Long vymazSouboryOVelikosti) {
         if (vymazSouboryOVelikosti > pevnyDisk.getVyuziteMisto()) {
             System.err.println("ERROR: Takové místo nenív paměti.");
@@ -91,6 +91,13 @@ public class Pocitac {
         this.vymazSouboryOVelikosti = vymazSouboryOVelikosti;
     }
 
+    public DruhyDisk getDruhyDisk() {
+        return druhyDisk;
+    }
+
+    public void setDruhyDisk(DruhyDisk druhyDisk) {
+        this.druhyDisk = druhyDisk;
+    }
 
     @Override
     public String toString() {
@@ -99,7 +106,7 @@ public class Pocitac {
                 ram + ", " +
                 "vytvor soubor o velikosti: " + vytvorSouborOVelikosti + " B, " +
                 "vymaz soubor o velikosti: " + vymazSouboryOVelikosti + " B, " +
-                pevnyDisk;
-
+                pevnyDisk + ", " +
+                druhyDisk;
     }
 }

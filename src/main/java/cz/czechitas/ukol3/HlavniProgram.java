@@ -1,9 +1,6 @@
 package cz.czechitas.ukol3;
 
-import cz.czechitas.ukol3.model.Disk;
-import cz.czechitas.ukol3.model.Pamet;
-import cz.czechitas.ukol3.model.Pocitac;
-import cz.czechitas.ukol3.model.Procesor;
+import cz.czechitas.ukol3.model.*;
 
 /**
  * Spouštěcí třída celého programu
@@ -32,9 +29,15 @@ public class HlavniProgram {
         mujDisk.setKapacita(512_000_000_000L);
         mujDisk.setVyuziteMisto(311_000_000_000L);
 
+        DruhyDisk mujDisk2;
+        mujDisk2 = new DruhyDisk();
+        mujDisk2.setKapacita(512_000_000_000L);
+        mujDisk2.setVyuziteMisto(0L);
+
         mujPocitac.setCpu(mujProcesor);
         mujPocitac.setRam(mojePamet);
         mujPocitac.setPevnyDisk(mujDisk);
+        mujPocitac.setDruhyDisk(mujDisk2);
 
         // Vytvoření nového souboru:
         mujPocitac.setVytvorSouborOVelikosti(100_000_000_000L);
