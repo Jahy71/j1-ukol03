@@ -10,7 +10,6 @@ public class Pocitac {
 
     private Disk pevnyDisk;
 
-
     private DruhyDisk druhyDisk;
 
     public boolean jeZapnuty() {
@@ -66,10 +65,15 @@ public class Pocitac {
             System.err.println("ERROR: Počítač je vypnutý - nelze vytvaret soubory.");
             return;
         }
-        if (velikost > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
-            System.err.println("ERROR: Nedostak mista na disku.");
-        } else {
+        if (velikost > ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) + (getDruhyDisk().getKapacita() - getDruhyDisk().getVyuziteMisto()))) {
+            System.err.println("ERROR: Na zadnem z disku není dostak mista.");
+        } else if (velikost < (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
+        } else if (getPevnyDisk().getVyuziteMisto() == 0 && velikost < (getDruhyDisk().getKapacita() - getDruhyDisk().getVyuziteMisto())) {
+            druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + velikost);
+        } else if ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) > 0 && ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) < velikost)) {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + (velikost = (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()))); // tady se snažím o rozdělení velikosti na část připadající na první a druhý disk
+            druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + (velikost = ()));
         }
     }
 
@@ -81,8 +85,7 @@ public class Pocitac {
         }
     }
 
-
-    /* TOTO JSME MĚL PŮVODNĚ:
+    /* PŮVODNÍ ŘEŠENÍ PŘIDÁNÍ A VYMAZÁNÍ SOUBORU O URČITÉ VELIKOSTI:
     public void setVytvorSouborOVelikosti(Long vytvorSouborOVelikosti) {
         if (vytvorSouborOVelikosti > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
             System.err.println("ERROR: Nedostatek místa na disku.");
