@@ -39,10 +39,9 @@ public class HlavniProgram {
         mujPocitac.setPevnyDisk(mujDisk);
         mujPocitac.setDruhyDisk(mujDisk2);
 
-        // Vytvoření nového souboru:
-        mujPocitac.setVytvorSouborOVelikosti(100_000_000_000L);
-        // Vymazání stávajícího souboru:
-        mujPocitac.setVymazSouboryOVelikosti(200_000_000_000L);
+        // Vytvoření a yvmazání souboru o určité velikosti:
+        mujPocitac.vytvorSouborOVelikosti(100_000_000_000L);
+        mujPocitac.setVymazSouborOVelikosti(200_000_000_000L);
 
         System.out.println(mujPocitac);
     }

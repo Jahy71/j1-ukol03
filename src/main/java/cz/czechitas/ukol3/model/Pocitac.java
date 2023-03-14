@@ -10,9 +10,6 @@ public class Pocitac {
 
     private Disk pevnyDisk;
 
-    private Long vytvorSouborOVelikosti;
-
-    private Long vymazSouboryOVelikosti;
 
     private DruhyDisk druhyDisk;
 
@@ -64,22 +61,34 @@ public class Pocitac {
         this.pevnyDisk = pevnyDisk;
     }
 
-    public Long getVytvorSouborOVelikosti() {
-        return vytvorSouborOVelikosti;
+    public void vytvorSouborOVelikosti(long velikost) {
+        if (jeZapnuty = false) {
+            System.err.println("ERROR: Počítač je vypnutý - nelze vytvaret soubory.");
+            return;
+        }
+        if (velikost > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
+            System.err.println("ERROR: Nedostak mista na disku.");
+        } else {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
+        }
     }
 
+    public void setVymazSouborOVelikosti(Long vymazSouborOVelikosti) {
+        if (vymazSouborOVelikosti > pevnyDisk.getVyuziteMisto()) {
+            System.err.println("ERROR: Takove misto neni v pameti.");
+        } else {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
+        }
+    }
+
+
+    /* TOTO JSME MĚL PŮVODNĚ:
     public void setVytvorSouborOVelikosti(Long vytvorSouborOVelikosti) {
         if (vytvorSouborOVelikosti > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
             System.err.println("ERROR: Nedostatek místa na disku.");
         } else {
             pevnyDisk.setVyuziteMisto(vytvorSouborOVelikosti + pevnyDisk.getVyuziteMisto());
         }
-        this.vytvorSouborOVelikosti = vytvorSouborOVelikosti;
-    }
-
-
-    public Long getVymazSouboryOVelikosti() {
-        return vymazSouboryOVelikosti;
     }
 
     public void setVymazSouboryOVelikosti(Long vymazSouboryOVelikosti) {
@@ -88,8 +97,8 @@ public class Pocitac {
         } else {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouboryOVelikosti);
         }
-        this.vymazSouboryOVelikosti = vymazSouboryOVelikosti;
     }
+    */
 
     public DruhyDisk getDruhyDisk() {
         return druhyDisk;
@@ -104,8 +113,6 @@ public class Pocitac {
         return "Pocitac: " +
                 cpu + ", " +
                 ram + ", " +
-                "vytvor soubor o velikosti: " + vytvorSouborOVelikosti + " B, " +
-                "vymaz soubor o velikosti: " + vymazSouboryOVelikosti + " B, " +
                 pevnyDisk + ", " +
                 druhyDisk;
     }
