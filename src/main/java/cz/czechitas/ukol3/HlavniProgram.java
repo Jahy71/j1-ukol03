@@ -29,8 +29,7 @@ public class HlavniProgram {
         mujDisk.setKapacita(512_000_000_000L);
         mujDisk.setVyuziteMisto(312_000_000_000L);
 
-        DruhyDisk mujDisk2;
-        mujDisk2 = new DruhyDisk();
+        Disk mujDisk2 = new Disk();
         mujDisk2.setKapacita(512_000_000_000L);
         mujDisk2.setVyuziteMisto(0L);
 
@@ -40,7 +39,7 @@ public class HlavniProgram {
         mujPocitac.setDruhyDisk(mujDisk2);
 
         // Vytvoření a yvmazání souboru o určité velikosti:
-        mujPocitac.vytvorSouborOVelikosti(300_000_000_000L);
+        mujPocitac.vytvorSouborOVelikostiBezRozdeleniDvaDisky(100_000_000_000L);
         mujPocitac.setVymazSouborOVelikosti(0L);
 
         System.out.println(mujPocitac);

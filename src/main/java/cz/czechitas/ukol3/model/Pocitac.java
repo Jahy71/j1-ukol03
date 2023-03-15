@@ -10,7 +10,7 @@ public class Pocitac {
 
     private Disk pevnyDisk;
 
-    private DruhyDisk druhyDisk;
+    private Disk druhyDisk;
 
     public boolean jeZapnuty() {
         return this.jeZapnuty;
@@ -60,20 +60,39 @@ public class Pocitac {
         this.pevnyDisk = pevnyDisk;
     }
 
-    public void vytvorSouborOVelikosti(long velikost) {
-        if (jeZapnuty = false) {
-            System.err.println("ERROR: Počítač je vypnutý - nelze vytvaret soubory.");
+
+    public void vytvorSouborOVelikostiBezRozdeleniJedenDisk(long velikost) {
+        if (!jeZapnuty) {
+            System.out.println("CHYBA: Počítač je vypnutý - nelze vytvaret soubory.");
             return;
         }
-        if (velikost > ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) + (getDruhyDisk().getKapacita() - getDruhyDisk().getVyuziteMisto()))) {
-            System.err.println("ERROR: Na zadnem z disku není dostak mista.");
-        } else if (velikost < (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
+
+        long zbyvajiciKapacita = pevnyDisk.getKapacita() - pevnyDisk.getVyuziteMisto();
+
+        if (velikost > zbyvajiciKapacita) {
+            System.out.println("ERROR: Na zadnem z disku není dostak mista.");
+        } else {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
-        } else if (getPevnyDisk().getVyuziteMisto() == 0 && velikost < (getDruhyDisk().getKapacita() - getDruhyDisk().getVyuziteMisto())) {
-            druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + velikost);
-        } else if ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) > 0 && ((getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()) < velikost)) {
-            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + (velikost = (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto()))); // tady se snažím o rozdělení velikosti na část připadající na první a druhý disk
-            druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + (velikost = ()));
+        }
+    }
+
+    public void vytvorSouborOVelikostiBezRozdeleniDvaDisky(long velikost) {
+        if (!jeZapnuty) {
+            System.out.println("ERROR: Počítač je vypnutý - nelze vytvaret soubory.");
+            return;
+        }
+
+        long zbyvajiciKapacitaPrvnihoDisku = pevnyDisk.getKapacita() - pevnyDisk.getVyuziteMisto();
+        long zbyvajiciKapacitaDruhehoDisku = druhyDisk.getKapacita() - druhyDisk.getVyuziteMisto();
+
+        if (velikost > zbyvajiciKapacitaPrvnihoDisku && velikost > zbyvajiciKapacitaDruhehoDisku) {
+            System.out.println("ERROR: Na zadnem z disku není dostak mista.");
+        } else {
+            if (velikost <= zbyvajiciKapacitaPrvnihoDisku) {
+                pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
+            } else {
+                druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + velikost);
+            }
         }
     }
 
@@ -103,11 +122,11 @@ public class Pocitac {
     }
     */
 
-    public DruhyDisk getDruhyDisk() {
+    public Disk getDruhyDisk() {
         return druhyDisk;
     }
 
-    public void setDruhyDisk(DruhyDisk druhyDisk) {
+    public void setDruhyDisk(Disk druhyDisk) {
         this.druhyDisk = druhyDisk;
     }
 
