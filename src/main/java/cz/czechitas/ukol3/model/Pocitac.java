@@ -19,13 +19,13 @@ public class Pocitac {
     public void zapniSe() {
         if (cpu != null && ram != null && pevnyDisk != null) {
             if (jeZapnuty) {
-                System.err.println("ERROR: Počítač je již zapnutý.");
+                System.out.println("CHYBA: Počítač je již zapnutý.");
             } else {
                 jeZapnuty = true;
                 System.out.println("Počítač se právě zapnul.");
             }
         } else {
-            System.err.println("ERROR: Počítači chybí komponenty.");
+            System.out.println("CHYBA: Počítači chybí komponenty.");
         }
     }
 
@@ -70,7 +70,7 @@ public class Pocitac {
         long zbyvajiciKapacita = pevnyDisk.getKapacita() - pevnyDisk.getVyuziteMisto();
 
         if (velikost > zbyvajiciKapacita) {
-            System.out.println("ERROR: Na zadnem z disku není dostak mista.");
+            System.out.println("CHYBA: Na zadnem z disku není dostak mista.");
         } else {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
         }
@@ -78,7 +78,7 @@ public class Pocitac {
 
     public void vytvorSouborOVelikostiBezRozdeleniDvaDisky(long velikost) {
         if (!jeZapnuty) {
-            System.out.println("ERROR: Počítač je vypnutý - nelze vytvaret soubory.");
+            System.out.println("CHYBA: Počítač je vypnutý - nelze vytvaret soubory.");
             return;
         }
 
@@ -86,7 +86,7 @@ public class Pocitac {
         long zbyvajiciKapacitaDruhehoDisku = druhyDisk.getKapacita() - druhyDisk.getVyuziteMisto();
 
         if (velikost > zbyvajiciKapacitaPrvnihoDisku && velikost > zbyvajiciKapacitaDruhehoDisku) {
-            System.out.println("ERROR: Na zadnem z disku není dostak mista.");
+            System.out.println("CHYBA: Na zadnem z disku není dostak mista.");
         } else {
             if (velikost <= zbyvajiciKapacitaPrvnihoDisku) {
                 pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
@@ -98,7 +98,7 @@ public class Pocitac {
 
     public void setVymazSouborOVelikosti(Long vymazSouborOVelikosti) {
         if (vymazSouborOVelikosti > pevnyDisk.getVyuziteMisto()) {
-            System.err.println("ERROR: Takove misto neni v pameti.");
+            System.out.println("CHYBA: Takove misto neni v pameti.");
         } else {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
         }
@@ -107,7 +107,7 @@ public class Pocitac {
     /* PŮVODNÍ ŘEŠENÍ PŘIDÁNÍ A VYMAZÁNÍ SOUBORU O URČITÉ VELIKOSTI:
     public void setVytvorSouborOVelikosti(Long vytvorSouborOVelikosti) {
         if (vytvorSouborOVelikosti > (getPevnyDisk().getKapacita() - getPevnyDisk().getVyuziteMisto())) {
-            System.err.println("ERROR: Nedostatek místa na disku.");
+            System.out.println("CHYBA: Nedostatek místa na disku.");
         } else {
             pevnyDisk.setVyuziteMisto(vytvorSouborOVelikosti + pevnyDisk.getVyuziteMisto());
         }
@@ -115,7 +115,7 @@ public class Pocitac {
 
     public void setVymazSouboryOVelikosti(Long vymazSouboryOVelikosti) {
         if (vymazSouboryOVelikosti > pevnyDisk.getVyuziteMisto()) {
-            System.err.println("ERROR: Takové místo nenív paměti.");
+            System.out.println("CHYBA: Takové místo nenív paměti.");
         } else {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouboryOVelikosti);
         }
