@@ -60,7 +60,7 @@ public class Pocitac {
         this.pevnyDisk = pevnyDisk;
     }
 
-
+    /*
     public void vytvorSouborOVelikostiBezRozdeleniJedenDisk(long velikost) {
         if (!jeZapnuty) {
             System.out.println("CHYBA: Počítač je vypnutý - nelze vytvaret soubory.");
@@ -75,6 +75,8 @@ public class Pocitac {
             pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
         }
     }
+    */
+
 
     public void vytvorSouborOVelikostiBezRozdeleniDvaDisky(long velikost) {
         if (!jeZapnuty) {
@@ -97,10 +99,24 @@ public class Pocitac {
     }
 
     public void setVymazSouborOVelikosti(Long vymazSouborOVelikosti) {
-        if (vymazSouborOVelikosti > pevnyDisk.getVyuziteMisto()) {
-            System.out.println("CHYBA: Takove misto neni v pameti.");
+        if (!jeZapnuty) {
+            System.err.println("CYHBA: Počítač je vypnutý - nelze mazat soubory.");
+            return;
+        }
+
+        if (vymazSouborOVelikosti > pevnyDisk.getVyuziteMisto() && vymazSouborOVelikosti > druhyDisk.getVyuziteMisto()) {
+            System.out.println("CHYBA: Soubor o teto vylikosti neni na zadnem disku.");
         } else {
-            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
+            if (vymazSouborOVelikosti <= pevnyDisk.getVyuziteMisto() && vymazSouborOVelikosti > druhyDisk.getVyuziteMisto()) {
+                pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
+                System.out.println("Soubor byl vymazán z prvního disku, na druhé disku nebyl uložen tak velký soubor.");
+            } else if (vymazSouborOVelikosti <= druhyDisk.getVyuziteMisto() && vymazSouborOVelikosti > pevnyDisk.getVyuziteMisto()) {
+                druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
+                System.out.println("Soubor byl vymazán z druhého disku, na první disku nebyl uložen tak velký soubor.");
+            } else { // situace, kdy je soubor lez vymazat, jak z první, tak i druhého disku -> upřednostní se vymazání z prvního disku
+                pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - vymazSouborOVelikosti);
+                System.out.println("Soubor byl vymazán z prvního disku.");
+            }
         }
     }
 

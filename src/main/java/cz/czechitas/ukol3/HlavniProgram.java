@@ -39,8 +39,8 @@ public class HlavniProgram {
         mujPocitac.setDruhyDisk(mujDisk2);
 
         // Vytvoření a yvmazání souboru o určité velikosti:
-        mujPocitac.vytvorSouborOVelikostiBezRozdeleniDvaDisky(100_000_000_000L);
-        mujPocitac.setVymazSouborOVelikosti(0L);
+        mujPocitac.vytvorSouborOVelikostiBezRozdeleniDvaDisky(200_000_000_000L);
+        mujPocitac.setVymazSouborOVelikosti(100_000_000_000L);
 
         System.out.println(mujPocitac);
     }
