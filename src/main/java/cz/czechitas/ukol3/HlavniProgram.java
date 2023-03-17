@@ -43,5 +43,6 @@ public class HlavniProgram {
         mujPocitac.setVymazSouborOVelikosti(100_000_000_000L);
 
         System.out.println(mujPocitac);
+
     }
 }

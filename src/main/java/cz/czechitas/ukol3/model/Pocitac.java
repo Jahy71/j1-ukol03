@@ -77,10 +77,14 @@ public class Pocitac {
     }
     */
 
-
     public void vytvorSouborOVelikostiBezRozdeleniDvaDisky(long velikost) {
         if (!jeZapnuty) {
             System.out.println("CHYBA: Počítač je vypnutý - nelze vytvaret soubory.");
+            return;
+        }
+
+        if (pevnyDisk == null && druhyDisk == null) {
+            System.err.println("CHYBA: Není připojen žádný z disků");
             return;
         }
 
@@ -101,6 +105,11 @@ public class Pocitac {
     public void setVymazSouborOVelikosti(Long vymazSouborOVelikosti) {
         if (!jeZapnuty) {
             System.err.println("CYHBA: Počítač je vypnutý - nelze mazat soubory.");
+            return;
+        }
+
+        if (pevnyDisk == null && druhyDisk == null) {
+            System.err.println("CHYBA: Není připojen žádný z disků");
             return;
         }
 
